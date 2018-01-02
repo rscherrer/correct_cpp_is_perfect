@@ -13,7 +13,8 @@ master|[![Build Status](https://travis-ci.org/richelbilderbeek/correct_cpp_is_pe
 ## Prerequisites
 
  * Understand [how this course works](https://github.com/richelbilderbeek/correct_cpp/blob/master/how_this_course_works.md)
- * Have written [a correct 'int_to_word' program](https://github.com/richelbilderbeek/correct_cpp_int_to_word)
+ * Have some experience [how to lower cyclomatic complexity](https://github.com/richelbilderbeek/correct_cpp/blob/master/lower_cyclomatic_complexity.md)
+ * Have written [a correct 'is_prime' program](https://github.com/richelbilderbeek/correct_is_prime)
 
 ## Exercise
 
@@ -109,7 +110,12 @@ For example:
  * 6 has proper divisors 1,2 and 3
  * 6 is perfect, as 1+2+3=6
 
+Number|Is perfect?
+Less than 6|No
+6|Yes
+7 to an including 27|No
+28|Yes
+
 ## External links
 
  * [Wikipedia's page about perfect numbers](https://en.wikipedia.org/wiki/Perfect_number)
-

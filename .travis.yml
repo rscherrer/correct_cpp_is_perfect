@@ -33,9 +33,19 @@ script:
   - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/is_perfect/test
   - chmod +x test
   - ./test
-  # Get code coverage badge (unneeded, codecov is tested by 'test' already
+
+after_fail:
+  # Get code coverage badge
   - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/is_perfect/get_code_cov
   - chmod +x get_code_cov
   - ./get_code_cov
   - codecov
+
+after_success:
+  # Get code coverage badge
+  - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/is_perfect/get_code_cov
+  - chmod +x get_code_cov
+  - ./get_code_cov
+  - codecov
+
 
