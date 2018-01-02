@@ -32,7 +32,6 @@ Call to `hello_cli`|Output|Exit status
 In this exercise, you start with the code below. Yes, that code works perfectly. 
 
 ```c++
-#include <cassert>
 #include <iostream>
 #include <string>
 #include <vector>
