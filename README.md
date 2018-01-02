@@ -1,23 +1,35 @@
-# correct_cpp_int_to_word
+# correct_cpp_is_perfect
 
 Branch|[Travis CI](https://travis-ci.org)|[Codecov](https://www.codecov.io)
 ---|---|---
-master|[![Build Status](https://travis-ci.org/richelbilderbeek/correct_cpp_int_to_word.svg?branch=master)](https://travis-ci.org/richelbilderbeek/correct_cpp_int_to_word)|[![codecov.io](https://codecov.io/github/richelbilderbeek/correct_cpp_int_to_word/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/correct_cpp_int_to_word/branch/master)
+master|[![Build Status](https://travis-ci.org/richelbilderbeek/correct_cpp_is_perfect.svg?branch=master)](https://travis-ci.org/richelbilderbeek/correct_cpp_is_perfect)|[![codecov.io](https://codecov.io/github/richelbilderbeek/correct_cpp_is_perfect/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/correct_cpp_is_perfect/branch/master)
 
 [Correct C++](https://github.com/richelbilderbeek/correct_cpp) chapter 'Hello CLI'.
 
 ## Goal
 
- * Write an application with 100% code coverage
+ * Refactor an application to lower cyclomatic complexity
 
 ## Prerequisites
 
  * Understand [how this course works](https://github.com/richelbilderbeek/correct_cpp/blob/master/how_this_course_works.md)
- * Have written [a correct 'is_odd' program](https://github.com/richelbilderbeek/correct_cpp_is_odd)
+ * Have written [a correct 'int_to_word' program](https://github.com/richelbilderbeek/correct_cpp_int_to_word)
 
 ## Exercise
 
-Write a command-line interface (CLI) program that convert the number 1 to (and including 6) to their words, followed by a newline.
+Write a command-line interface (CLI) program that determines if a number is a perfect number (see 'What is a perfect number?').
+
+Here are the outputs and exit statuses the program should give:
+
+Call to `hello_cli`|Output|Exit status
+---|---|---
+`./is_perfect`|Any|1
+`./is_perfect X`, where X is a number that is not perfect|`false` (with newline)|0
+`./is_perfect Y`, where Y is a number that is perfect|`true` (with newline)|0
+`./is_perfect nonsense`|Any|1
+`./is_perfect 6 28`|Any|1
+
+In this exercise, you start with the code below. Yes, that code works perfectly. 
 
 ```c++
 #include <cassert>
@@ -78,28 +90,21 @@ int main(int argc, char* argv[])
 }
 ```
 
-Fail if the user supplies no, two or more arguments
+The code has a too high cyclomatic complexity. Simplify it.
 
-Call to `hello_cli`|Output|Exit status
----|---|---
-`./int_to_word`|Any|1
-`./int_to_word 1`|`one` (with newline)|0
-`./int_to_word 2`|`two` (with newline)|0
-`./int_to_word 3`|`three` (with newline)|0
-`./int_to_word 4`|`four` (with newline)|0
-`./int_to_word 5`|`five` (with newline)|0
-`./int_to_word 6`|`six` (with newline)|0
-`./int_to_word nonsense`|Any|1
-`./int_to_word 1 2`|Any|1
-
-This is the code you start with:
-
-```c++
-main(argc, argv)
-{
-  //Your code here
-}
-```
-
+ * See [how to lower cyclomatic complexity](https://github.com/richelbilderbeek/correct_cpp/blob/master/how_to_lower_cyclomatic_complexity.md)
  * Your code needs to have 100% code coverage, regardless how it is called (that is, with zero, one or more arguments), 
    see [how to get 100 percent code coverage](https://github.com/richelbilderbeek/correct_cpp/blob/master/how_to_get_100_percent_code_coverage.md)
+
+## What is a perfect number?
+
+Any number is a perfect number if the sum of its proper divisors equals itself.
+A number's divisors are those value the number can be divided by without leaving a remainer.
+A number's proper divisors are those divisors different from the number itself.
+
+For example:
+ * 6 has divisors 1,2,3 and 6
+ * 6 has proper divisors 1,2 and 3
+ * 6 is perfect, as 1+2+3=6
+
+
