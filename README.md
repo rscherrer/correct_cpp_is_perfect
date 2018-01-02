@@ -4,7 +4,7 @@ Branch|[Travis CI](https://travis-ci.org)|[Codecov](https://www.codecov.io)
 ---|---|---
 master|[![Build Status](https://travis-ci.org/richelbilderbeek/correct_cpp_is_perfect.svg?branch=master)](https://travis-ci.org/richelbilderbeek/correct_cpp_is_perfect)|[![codecov.io](https://codecov.io/github/richelbilderbeek/correct_cpp_is_perfect/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/correct_cpp_is_perfect/branch/master)
 
-[Correct C++](https://github.com/richelbilderbeek/correct_cpp) chapter 'Hello CLI'.
+[Correct C++](https://github.com/richelbilderbeek/correct_cpp) chapter 'is_perfect'.
 
 ## Goal
 
@@ -90,9 +90,12 @@ int main(int argc, char* argv[])
 }
 ```
 
-The code has a too high cyclomatic complexity. Simplify it.
-
- * See [how to lower cyclomatic complexity](https://github.com/richelbilderbeek/correct_cpp/blob/master/how_to_lower_cyclomatic_complexity.md)
+ * The code has a too high cyclomatic complexity. Simplify it. See [how to lower cyclomatic complexity](https://github.com/richelbilderbeek/correct_cpp/blob/master/how_to_lower_cyclomatic_complexity.md). 
+   Tips:
+     * the comments tell what is happening, create functions with those names
+     * a possible function prototype: `std::vector<int> collect_proper_divisors(const int i) noexcept`
+     * a possible function prototype: `int sum(const std::vector<int>& v) noexcept`
+     * a possible function prototype: `bool is_perfect(const int i) noexcept`
  * Your code needs to have 100% code coverage, regardless how it is called (that is, with zero, one or more arguments), 
    see [how to get 100 percent code coverage](https://github.com/richelbilderbeek/correct_cpp/blob/master/how_to_get_100_percent_code_coverage.md)
 
@@ -107,4 +110,7 @@ For example:
  * 6 has proper divisors 1,2 and 3
  * 6 is perfect, as 1+2+3=6
 
+## External links
+
+ * [Wikipedia's page about perfect numbers](https://en.wikipedia.org/wiki/Perfect_number)
 
