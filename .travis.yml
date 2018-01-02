@@ -34,18 +34,9 @@ script:
   - chmod +x test
   - ./test
 
-after_fail:
+after_script:
   # Get code coverage badge
   - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/is_perfect/get_code_cov
   - chmod +x get_code_cov
   - ./get_code_cov
   - codecov
-
-after_success:
-  # Get code coverage badge
-  - wget https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/is_perfect/get_code_cov
-  - chmod +x get_code_cov
-  - ./get_code_cov
-  - codecov
-
-
