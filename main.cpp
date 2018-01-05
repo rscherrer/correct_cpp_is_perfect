@@ -13,7 +13,7 @@ std::vector<int> get_proper_divisors(const int i) noexcept
   std::vector<int> v;
   for (int j=1; j!=i-1; ++j)
   {
-    if (i % j == 0)
+    if (!(i % j))
     {
       v.push_back(j);
     }
