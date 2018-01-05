@@ -33,6 +33,7 @@ Call to `is_perfect`|Output|Exit status
 In this exercise, you start with the code below. Yes, that code works perfectly. 
 
 ```c++
+#include <cassert>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -42,39 +43,50 @@ int main(int argc, char* argv[])
   if (argc != 2) return 1;
   try
   {
-    const int i{std::stoi(argv[1])};
-    if (i == 0)
-    {
-      std::cout << "false\n";
-      return 0;
-    }
+    const int value{std::stoi(argv[1])};
+
+    // Is this a perfect number?
+    // -1: unknown
+    //  0: false
+    //  1: true
+    int is_perfect{-1};
+
+    // Negative values are not perfect
+    if (value < 0) is_perfect = 0;
+
+    // Zero is not perfect
+    if (is_perfect == -1 && value == 0) is_perfect = 0;
+
     //Collect the proper divisors
-    std::vector<int> v;
-    if (i < 2)
+    std::vector<int> proper_divisors;
+    
+    if (is_perfect == -1 && value == 2)
     {
-      //v is okay as it is
+      proper_divisors.push_back(1);
     }
-    else if (i == 2)
+    else if (is_perfect == -1 && value > 2)
     {
-      v.push_back(1);
-    }
-    else
-    {
-      for (int j=1; j!=i-1; ++j)
+      for (int denominator=1; denominator!=value-1; ++denominator)
       {
-        if (i % j == 0)
+        if (value % denominator == 0)
         {
-          v.push_back(j);
+          proper_divisors.push_back(denominator);
         }
       }
     }
-    //sum the proper divisors
+
+    //sum the proper divisors, if not known if number is perfect
     int sum{0};
-    for (const int j: v) { sum += j; }
-    //is it perfect?
-    const bool is_perfect{sum == i};
+    if (is_perfect == -1)
+    {
+      for (const int proper_divisor: proper_divisors) { sum += proper_divisor; }
+    }
+    if (is_perfect == -1 && sum == value) is_perfect = 1;
+    if (is_perfect == -1) is_perfect = 0;
+
     //show
-    if (is_perfect)
+    assert(is_perfect != -1); //Must be known now
+    if (is_perfect == 1)
     {
       std::cout << "true\n";
     }
@@ -90,6 +102,8 @@ int main(int argc, char* argv[])
 }
 ```
 
+
+ * You may start from scratch if you think that is simpler
  * The code has a too high cyclomatic complexity. Simplify it. See [how to lower cyclomatic complexity](https://github.com/richelbilderbeek/correct_cpp/blob/master/lower_cyclomatic_complexity.md). 
    Tips:
      * the comments tell what is happening, create functions with those names
