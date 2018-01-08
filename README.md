@@ -12,8 +12,8 @@ master|[![Build Status](https://travis-ci.org/richelbilderbeek/correct_cpp_is_pe
 
 ## Prerequisites
 
- * Understand [how this course works](https://github.com/richelbilderbeek/correct_cpp/blob/master/how_this_course_works.md)
- * Have some experience [how to lower cyclomatic complexity](https://github.com/richelbilderbeek/correct_cpp/blob/master/lower_cyclomatic_complexity.md)
+ * Understand [how this course works](https://github.com/richelbilderbeek/correct_cpp/blob/master/doc/how_this_course_works.md)
+ * Have some experience [how to lower cyclomatic complexity](https://github.com/richelbilderbeek/correct_cpp/blob/master/doc/lower_cyclomatic_complexity.md)
  * Have written [a correct 'is_prime' program](https://github.com/richelbilderbeek/correct_is_prime)
 
 ## Exercise
@@ -104,14 +104,14 @@ int main(int argc, char* argv[])
 
 
  * You may start from scratch if you think that is simpler
- * The code has a too high cyclomatic complexity. Simplify it. See [how to lower cyclomatic complexity](https://github.com/richelbilderbeek/correct_cpp/blob/master/lower_cyclomatic_complexity.md). 
+ * The code has a too high cyclomatic complexity. Simplify it. See [how to lower cyclomatic complexity](https://github.com/richelbilderbeek/correct_cpp/blob/master/doc/lower_cyclomatic_complexity.md). 
    Tips:
      * the comments tell what is happening, create functions with those names
      * a possible function prototype: `std::vector<int> collect_proper_divisors(const int i) noexcept`
      * a possible function prototype: `int sum(const std::vector<int>& v) noexcept`
      * a possible function prototype: `bool is_perfect(const int i) noexcept`
  * Your code needs to have 100% code coverage, regardless how it is called (that is, with zero, one or more arguments), 
-   see [how to get 100 percent code coverage](https://github.com/richelbilderbeek/correct_cpp/blob/master/get_100_percent_code_coverage.md)
+   see [how to get 100 percent code coverage](https://github.com/richelbilderbeek/correct_cpp/blob/master/doc/get_100_percent_code_coverage.md)
 
 ## What is a perfect number?
 
