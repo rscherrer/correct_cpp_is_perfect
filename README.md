@@ -133,5 +133,4 @@ Less than 6|No
 ## External links
 
  * [Wikipedia's page about perfect numbers](https://en.wikipedia.org/wiki/Perfect_number)
- * [Download the Qt Creator file `main.pro`](https://raw.githubusercontent.com/richelbilderbeek/correct_cpp/master/shared/main.pro)
 
