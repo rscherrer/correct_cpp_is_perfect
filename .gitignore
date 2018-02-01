@@ -39,4 +39,3 @@ Makefile.*
 get_code_cov
 main
 *.pro.user
-main.pro
