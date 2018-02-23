@@ -125,6 +125,7 @@ For example:
  * 6 is perfect, as 1+2+3=6
 
 Number|Is perfect?
+---|---
 Less than 6|No
 6|Yes
 7 to an including 27|No
