@@ -34,7 +34,7 @@ bool isPerfect(const int &value) noexcept
     // Get the proper divisors of the number
     const std::vector<int> properDivisors = getProperDivisors(value);
 
-    // If there are no proper divisors, the number is prime and is not perfect
+    // If there are no proper divisors, the number is not perfect
     if (properDivisors.empty()) return false;
 
     // Sum the proper divisors
