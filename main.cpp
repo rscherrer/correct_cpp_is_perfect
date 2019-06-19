@@ -8,22 +8,19 @@
 /// Function to find the proper divisors of a number
 std::vector<int> getProperDivisors(const int &value)
 {
-    std::vector<int> proper_divisors;
 
-    if (is_perfect == -1 && value == 2)
+    std::vector<int> properDivisors;
+
+    // Loop through divisors
+    for (int divisor = 1; divisor != value / 2 + 1; ++divisor)
     {
-        proper_divisors.push_back(1);
-    }
-    else if (is_perfect == -1 && value > 2)
-    {
-        for (int denominator=1; denominator!=value-1; ++denominator)
+        if (value % divisor == 0)
         {
-            if (value % denominator == 0)
-            {
-                proper_divisors.push_back(denominator);
-            }
+            properDivisors.push_back(divisor);
         }
     }
+
+    return properDivisors;
 }
 
 
@@ -31,21 +28,20 @@ std::vector<int> getProperDivisors(const int &value)
 bool isPerfect(const int &value) noexcept
 {
 
-    // A perfect number must be positive
-    if (value > 0) {
+    // If a number is negative, it cannot be perfect
+    if (value < 1) return false;
 
-        // Get the proper divisors of the number
-        const std::vector<int> properDivisors = getProperDivisors(value);
+    // Get the proper divisors of the number
+    const std::vector<int> properDivisors = getProperDivisors(value);
 
-        // Sum the proper divisors
-        const int sumProperDivisors = std::accumulate(properDivisors.begin(), properDivisors.end(), 0);
+    // If there are no proper divisors, the number is prime and is not perfect
+    if (properDivisors.empty()) return false;
 
-        // Is the sum of proper divisors equal to the initial number?
-        return value == sumProperDivisors;
+    // Sum the proper divisors
+    const int sumProperDivisors = std::accumulate(properDivisors.begin(), properDivisors.end(), 0);
 
-    }
-
-    return false;
+    // Is the sum of proper divisors equal to the initial number?
+    return value == sumProperDivisors;
 
 }
 
@@ -61,11 +57,6 @@ int doMain(const std::vector<std::string> &args)
 
         // Convert argument into a number
         const int value{std::stoi(args[1])};
-
-        // Is this a perfect number?
-        // -1: unknown
-        //  0: false
-        //  1: true
 
         // Determine if the number is perfect
         const bool isNumberPerfect = isPerfect(value);
