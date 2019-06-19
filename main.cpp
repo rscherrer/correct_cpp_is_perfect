@@ -9,8 +9,11 @@ int doMain(const std::vector<std::string> &args)
 {
     try
     {
+
+        // Check number of arguments
         if (args.size() != 2u) throw std::runtime_error("Error: Invalid number of arguments.");
 
+        // Convert argument into a number 
         const int value{std::stoi(args[1])};
 
         // Is this a perfect number?
@@ -54,6 +57,7 @@ int doMain(const std::vector<std::string> &args)
         }
         if (is_perfect == -1 && sum == value) is_perfect = 1;
         if (is_perfect == -1) is_perfect = 0;
+        
 
         //show
         assert(is_perfect != -1); //Must be known now
@@ -66,10 +70,22 @@ int doMain(const std::vector<std::string> &args)
             std::cout << "false\n";
         }
     }
-    catch (const std::exception&)
+    catch (const std::runtime_error &err)
     {
+        std::cout << err.what() << '\n';
         return 1;
     }
+    catch (const std::invalid_argument&)
+    {
+        std::cout << "Error: Argument is not an integer.\n";
+        return 1;
+    }
+    catch (const std::out_of_range&)
+    {
+        std::cout << "Error: Number too big for an integer.\n";
+        return 1;
+    }
+    return 0;
 }
 
 
