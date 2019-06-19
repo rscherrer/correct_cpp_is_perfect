@@ -4,16 +4,14 @@
 #include <vector>
 
 
-
-/// Program to determine if a number is perfect
-int main(int argc, char* argv[])
+/// Function to run the program
+int doMain(const std::vector<std::string> &args)
 {
-
     try
     {
-        if (argc != 2) throw std::runtime_error("Error: Invalid number of arguments.");
+        if (args.size() != 2u) throw std::runtime_error("Error: Invalid number of arguments.");
 
-        const int value{std::stoi(argv[1])};
+        const int value{std::stoi(args[1])};
 
         // Is this a perfect number?
         // -1: unknown
@@ -72,4 +70,17 @@ int main(int argc, char* argv[])
     {
         return 1;
     }
+}
+
+
+/// Program to determine if a number is perfect
+int main(int argc, char* argv[])
+{
+
+    // Preparation
+    const std::vector<std::string> args(argv, argv + argc);
+
+    // Run the program
+    return doMain(args);
+
 }
