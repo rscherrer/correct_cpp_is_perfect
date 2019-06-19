@@ -4,6 +4,49 @@
 #include <vector>
 
 
+/// Function to determine if a number is perfect
+bool isPerfect(const int &value) noexcept
+{
+    int is_perfect{-1};
+
+    // Negative values are not perfect
+    if (value < 0) is_perfect = 0;
+
+    // Zero is not perfect
+    if (is_perfect == -1 && value == 0) is_perfect = 0;
+
+    //Collect the proper divisors
+    std::vector<int> proper_divisors;
+
+    if (is_perfect == -1 && value == 2)
+    {
+        proper_divisors.push_back(1);
+    }
+    else if (is_perfect == -1 && value > 2)
+    {
+        for (int denominator=1; denominator!=value-1; ++denominator)
+        {
+            if (value % denominator == 0)
+            {
+                proper_divisors.push_back(denominator);
+            }
+        }
+    }
+
+    //sum the proper divisors, if not known if number is perfect
+    int sum{0};
+    if (is_perfect == -1)
+    {
+        for (const int proper_divisor: proper_divisors) { sum += proper_divisor; }
+    }
+    if (is_perfect == -1 && sum == value) is_perfect = 1;
+    if (is_perfect == -1) is_perfect = 0;
+    
+    return is_perfect == 1;
+    
+}
+
+
 /// Function to run the program
 int doMain(const std::vector<std::string> &args)
 {
@@ -13,7 +56,7 @@ int doMain(const std::vector<std::string> &args)
         // Check number of arguments
         if (args.size() != 2u) throw std::runtime_error("Error: Invalid number of arguments.");
 
-        // Convert argument into a number 
+        // Convert argument into a number
         const int value{std::stoi(args[1])};
 
         // Is this a perfect number?
@@ -21,54 +64,12 @@ int doMain(const std::vector<std::string> &args)
         //  0: false
         //  1: true
 
+        // Determine if the number is perfect
+        const bool isNumberPerfect = isPerfect(value);
 
-
-        int is_perfect{-1};
-
-        // Negative values are not perfect
-        if (value < 0) is_perfect = 0;
-
-        // Zero is not perfect
-        if (is_perfect == -1 && value == 0) is_perfect = 0;
-
-        //Collect the proper divisors
-        std::vector<int> proper_divisors;
-
-        if (is_perfect == -1 && value == 2)
-        {
-            proper_divisors.push_back(1);
-        }
-        else if (is_perfect == -1 && value > 2)
-        {
-            for (int denominator=1; denominator!=value-1; ++denominator)
-            {
-                if (value % denominator == 0)
-                {
-                    proper_divisors.push_back(denominator);
-                }
-            }
-        }
-
-        //sum the proper divisors, if not known if number is perfect
-        int sum{0};
-        if (is_perfect == -1)
-        {
-            for (const int proper_divisor: proper_divisors) { sum += proper_divisor; }
-        }
-        if (is_perfect == -1 && sum == value) is_perfect = 1;
-        if (is_perfect == -1) is_perfect = 0;
+        // Display the result
+        isNumberPerfect ? std::cout << "true\n" : std::cout << "false\n";
         
-
-        //show
-        assert(is_perfect != -1); //Must be known now
-        if (is_perfect == 1)
-        {
-            std::cout << "true\n";
-        }
-        else
-        {
-            std::cout << "false\n";
-        }
     }
     catch (const std::runtime_error &err)
     {
