@@ -6,7 +6,7 @@
 
 
 /// Function to find the proper divisors of a number
-std::vector<int> getProperDivisors(const int &value)
+std::vector<int> getProperDivisors(const int &value) noexcept
 {
 
     std::vector<int> properDivisors;
@@ -47,7 +47,7 @@ bool isPerfect(const int &value) noexcept
 
 
 /// Function to run the program
-int doMain(const std::vector<std::string> &args)
+int doMain(const std::vector<std::string> &args) noexcept
 {
     try
     {
@@ -84,13 +84,46 @@ int doMain(const std::vector<std::string> &args)
 }
 
 
+/// Function to test the task performing behavior of the program
+void testUse() noexcept
+{
+    assert(doMain( { "is_perfect", "1"} ) == 0);
+    assert(doMain( { "is_perfect", "2"} ) == 0);
+    assert(doMain( { "is_perfect", "3"} ) == 0);
+    assert(doMain( { "is_perfect", "6"} ) == 0);
+    assert(doMain( { "is_perfect", "-1"} ) == 0);
+    assert(doMain( { "is_perfect", "100"} ) == 0);
+}
+
+
+/// Function to test the error handling behavior of the program
+void testAbuse() noexcept
+{
+    assert(doMain( { "is_perfect", "nonsense"} ) == 1);
+    assert(doMain( { "is_perfect", "123456789123456789"} ) == 1);
+    assert(doMain( { "is_perfect", "1", "7"} ) == 1);
+    assert(doMain( { "is_perfect"} ) == 1);
+}
+
+
+/// Function to test the program
+void test() noexcept
+{
+    testUse();
+    testAbuse();
+}
+
+
 /// Program to determine if a number is perfect
 int main(int argc, char* argv[])
 {
 
     // Preparation
     const std::vector<std::string> args(argv, argv + argc);
-
+    
+    // Test the program
+    test();
+    
     // Run the program
     return doMain(args);
 
