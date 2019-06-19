@@ -3,19 +3,25 @@
 #include <string>
 #include <vector>
 
+
+
+/// Program to determine if a number is perfect
 int main(int argc, char* argv[])
 {
-    
+
     try
     {
         if (argc != 2) throw std::runtime_error("Error: Invalid number of arguments.");
-        
+
         const int value{std::stoi(argv[1])};
 
         // Is this a perfect number?
         // -1: unknown
         //  0: false
         //  1: true
+
+
+
         int is_perfect{-1};
 
         // Negative values are not perfect
