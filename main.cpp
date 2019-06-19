@@ -2,20 +2,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <numeric>
 
 
-/// Function to determine if a number is perfect
-bool isPerfect(const int &value) noexcept
+/// Function to find the proper divisors of a number
+std::vector<int> getProperDivisors(const int &value)
 {
-    int is_perfect{-1};
-
-    // Negative values are not perfect
-    if (value < 0) is_perfect = 0;
-
-    // Zero is not perfect
-    if (is_perfect == -1 && value == 0) is_perfect = 0;
-
-    //Collect the proper divisors
     std::vector<int> proper_divisors;
 
     if (is_perfect == -1 && value == 2)
@@ -32,18 +24,29 @@ bool isPerfect(const int &value) noexcept
             }
         }
     }
+}
 
-    //sum the proper divisors, if not known if number is perfect
-    int sum{0};
-    if (is_perfect == -1)
-    {
-        for (const int proper_divisor: proper_divisors) { sum += proper_divisor; }
+
+/// Function to determine if a number is perfect
+bool isPerfect(const int &value) noexcept
+{
+
+    // A perfect number must be positive
+    if (value > 0) {
+
+        // Get the proper divisors of the number
+        const std::vector<int> properDivisors = getProperDivisors(value);
+
+        // Sum the proper divisors
+        const int sumProperDivisors = std::accumulate(properDivisors.begin(), properDivisors.end(), 0);
+
+        // Is the sum of proper divisors equal to the initial number?
+        return value == sumProperDivisors;
+
     }
-    if (is_perfect == -1 && sum == value) is_perfect = 1;
-    if (is_perfect == -1) is_perfect = 0;
-    
-    return is_perfect == 1;
-    
+
+    return false;
+
 }
 
 
@@ -69,7 +72,7 @@ int doMain(const std::vector<std::string> &args)
 
         // Display the result
         isNumberPerfect ? std::cout << "true\n" : std::cout << "false\n";
-        
+
     }
     catch (const std::runtime_error &err)
     {
